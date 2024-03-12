@@ -6,6 +6,10 @@ import { BookingsComponent } from './bookings/bookings.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CreateBookingComponent } from './create-booking/create-booking.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +20,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: true}),
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
