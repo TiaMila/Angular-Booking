@@ -1,0 +1,37 @@
+Angular
+ ng generate component name
+dann in app compoennt komponente einbinden <name></name>->name steht in den meta daten der neu erzeugten Component bei selector
+ints varablen dekalrieren 
+in htm mit {{title}} anzeigen lassen
+--> Databinding
+
+Component enthält nur den grob aufbau-> wiederverwendbar
+Interface enthält genauere daten und ist eine .ts datei die in "app" liegt
+
+Kann kein Objekt darstellen, dann zeigt er Objekt Objekt an, also alles mit. aufrufe --> booking.name
+
+pipes zum anzeigen eines bestimmten formats"  {{booking.startDate | date: 'dd/MM/yy'}}  "
+*ngFor="let booking of  bookings" für jedes element  bookings das bucking
+
+ FormsModule damit wir bei eingaben vorteile haben und im html binden    <input [(ngModel)}="booking.id" name="id" class="form-control" /> -->2way databinding deshalb in save auf das objekt zugreifen
+
+craste und edit gleiche Component of createedit bezeichnet-> routing auf gleiche component ( 
+{
+   path: 'createBooking', component: CreateBookingComponent
+ },
+ {
+   path: 'editBooking/:id', component: CreateBookingComponent
+
+ },
+)
+
+   var bookingById = Bookings.find(b => b.id == id)!; das ! sagt, dass es nicht null sein darf
+
+manuelles datatbinding bei datum(create-booking.component.html)->   <input type="date" [value]="booking.endDate | date:'yyyy-MM-dd'" (input)="dateChanged($event)" name="eDate" class="form-control" />, dann in ts change methode anlegen
+(input)="dateChanged($event,true)" booolean setzen damit wir beide daten unterscheiden können
+
+service is singleton
+
+web-Api in app.odule.ts einbinden import { HttpClientModule } from '@angular/common/http' und import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+ einfügen
